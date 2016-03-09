@@ -1,7 +1,7 @@
 <?php
 use models\ProductPageCrawler;
 
-class ExampleTest extends \Codeception\TestCase\Test
+class ProductPageCrawlerTest extends \Codeception\TestCase\Test
 {
     protected function setUp()
     {     
@@ -12,13 +12,13 @@ class ExampleTest extends \Codeception\TestCase\Test
     }
 
     // tests
-    public function testResponse()
+    public function testResponseStructure()
     {
         $productPageCrawler = new ProductPageCrawler();
         $response = $productPageCrawler->extractProducts();
 
-        $this->assertTrue( isset($response['items']) );
-        $this->assertTrue( is_array($response['items']) );
-        $this->assertTrue( isset($response['total']) );
+        $this->assertContains( 'results', $response );
+        $this->assertContains( 'total', $response );
+        // assert $response['results'] is an array 
     }
 }
