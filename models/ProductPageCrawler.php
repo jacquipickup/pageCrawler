@@ -15,13 +15,17 @@ class ProductPageCrawler extends PageCrawler{
 	protected $results = [];
 
 	
-	public function extractProducts(){
+	public function getResponse()
+	{
 		return json_encode([
 			'results' => $this->results,
 			'total' => $this->total,
 		]);
 	}
 
+	public function extractProducts()
+	{
+	}
 	public function getProductElements()
 	{
 		$elems = $this->getDomElements(self::PRODUCT_PATH, '.product');
