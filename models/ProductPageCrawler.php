@@ -18,4 +18,10 @@ class ProductPageCrawler extends PageCrawler{
 			'total' => $this->total,
 		]);
 	}
+
+
+	public function getProducts(){
+		$elems = $this->getDomElements('.product');
+        return $elems;
+	}
 }

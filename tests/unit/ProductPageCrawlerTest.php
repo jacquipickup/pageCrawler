@@ -28,4 +28,11 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
         $elems = $this->crawler->getDomElements('a');
         $this->assertNotEmpty($elems);
     }
+
+    public function testGetProducts()
+    {
+        $elems = $this->crawler->getProducts();
+        $this->assertNotEmpty($elems);
+        $this->assertEquals($elems[0]->class, 'product');
+    }
 }
