@@ -65,20 +65,31 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
         $this->assertTrue( $methodExists, 'Class does not have method addResult' );
     }
 
-
-    public function testGetProductIsObject()
-    {
-        foreach($this->dummyProducts as $productAttributes)
-        {
-            $this->runAddResult();
-            $results = $this->crawler->getResults();
-            $this->assertTrue(is_object(array_pop($results)), 'Result item is not an object');
-        }
-    }
-
     protected function runAddResult(array $attributes = [])
     {
         $this->crawler->addResult($attributes);
+    }
+
+    public function testGetProductIsObject()
+    {
+        $this->runAddResult();
+        $results = $this->crawler->getResults();
+        $this->assertTrue(is_object(array_pop($results)), 'Result item is not an object');
+    }
+
+    public function testResultItemContainsCorrectAttributes()
+    {
+        foreach($this->dummyProducts as $attributes)
+        {
+            $this->runAddResult($attributes);
+            $results = $this->crawler->getResults();
+            $result = array_pop($results);
+
+            $this->assertEquals($result->description, $attributes['description']);
+            $this->assertEquals($result->unit_price, $attributes['unit_price']);
+            $this->assertEquals($result->title, $attributes['title']);
+            $this->assertEquals($result->size, $attributes['size']);
+        }
     }
 
     
