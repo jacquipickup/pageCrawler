@@ -19,9 +19,12 @@ class ProductPageCrawler extends PageCrawler{
 		]);
 	}
 
-
 	public function getProducts(){
 		$elems = $this->getDomElements('.product');
         return $elems;
+	}
+
+	protected function addResult(){
+		
 	}
 }

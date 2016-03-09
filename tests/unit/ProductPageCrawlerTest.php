@@ -4,6 +4,7 @@ use models\ProductPageCrawler;
 class ProductPageCrawlerTest extends \Codeception\TestCase\Test
 {
     protected $crawler;
+    protected $productElements;
     protected function setUp()
     {
         $this->crawler = new ProductPageCrawler();
@@ -29,10 +30,21 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
         $this->assertNotEmpty($elems);
     }
 
-    public function testGetProducts()
+    public function testGetProductElements()
     {
-        $elems = $this->crawler->getProducts();
-        $this->assertNotEmpty($elems);
-        $this->assertEquals($elems[0]->class, 'product');
+        $this->productElements = $this->crawler->getProducts();
+        $this->assertNotEmpty($this->productElements);
+        $this->assertEquals($this->productElements[0]->class, 'product');
     }
+
+    public function testHasAddResultMethod()
+    {
+        $methodExists = method_exists($this->crawler, 'addResult');
+        $this->assertTrue( $methodExists, 'Class does not have method addResult' );
+    }
+
+
+   
+
+    
 }
