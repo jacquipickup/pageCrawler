@@ -22,6 +22,7 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
             'unit_price' => '3.20',
             'title' => 'testing Title',
             'size' => '200kb',
+            'dodgyAttr' => 'sdjfbksdjfbkfjsdbfsfjsdffsjdbdsfkj',
         ];
         $this->dummyProducts[] = [
             'description' => 'testing Description',
@@ -85,10 +86,10 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
             $results = $this->crawler->getResults();
             $result = array_pop($results);
 
-            $this->assertEquals($result->description, $attributes['description']);
-            $this->assertEquals($result->unit_price, $attributes['unit_price']);
-            $this->assertEquals($result->title, $attributes['title']);
-            $this->assertEquals($result->size, $attributes['size']);
+            $this->assertEquals($result->description, $attributes['description'], 'description NOT: '.$result->description);
+            $this->assertEquals($result->unit_price, $attributes['unit_price'], 'unit_price NOT: '.$result->unit_price);
+            $this->assertEquals($result->title, $attributes['title'], 'title NOT: '.$result->title);
+            $this->assertEquals($result->size, $attributes['size'], 'size NOT: '.$result->size);
         }
     }
 
