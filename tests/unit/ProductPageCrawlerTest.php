@@ -1,6 +1,23 @@
 <?php
 use models\ProductPageCrawler;
 
+/*
+
+Notes:
+I wanted to created seperate unit tests for the PageCrawler class, but as this is an abstract couldn't directly. 
+Should've probably created a basic class that extended it without any  additional functinality.
+
+Haven't created a full test suite for all the code developed as started to run out of time. 
+I hope there is enough here for you to see how I would've carried on.
+This is my first trial of Unit Testing and Codeception
+
+I have chosen to extend PageCrawler so this could be reused as it isn't project specific. It acts as a wrapper for Sunra\PhpSimple\HtmlDomParser but probably should've been considered as a helper class.
+
+I've chosen to not use a framework due to the size of the project and didn't think it would add enough value.
+
+
+*/
+
 class ProductPageCrawlerTest extends \Codeception\TestCase\Test
 {
     protected $crawler;
