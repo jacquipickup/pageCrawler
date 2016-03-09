@@ -15,7 +15,7 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
             'description' => 'testing Description',
             'unit_price' => '3.20',
             'title' => 'testing Title',
-            'size' => '200kb',
+            'size' => '200',
         ];
         $this->dummyProducts[] = [
             'description' => 'testing Description',
@@ -40,16 +40,17 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
     // tests
     public function testResponseStructure()
     {
-        $response = $this->crawler->extractProducts();
+        $response = $this->crawler->getResponse();
 
-        $this->assertContains( 'results', $response );
-        $this->assertContains( 'total', $response );
-        // assert $response['results'] is an array 
+        $this->assertContains('results', $response);
+        $this->assertContains('total', $response);
+        $decodedResponse = json_decode($response);
+        $this->assertTrue( is_array($decodedResponse->results) );
     }
 
     public function testReturnsElems()
     {
-        $elems = $this->crawler->getDomElements('a');
+        $elems = $this->crawler->getDomElements(ProductPageCrawler::PRODUCT_PATH, 'a');
         $this->assertNotEmpty($elems);
     }
 
