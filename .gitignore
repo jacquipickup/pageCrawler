@@ -1,5 +1,5 @@
 !.gitignore
 
 tests/_output/*
-
 vendor/*
+composer.lock
