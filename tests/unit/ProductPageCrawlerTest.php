@@ -70,13 +70,13 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
     {
         foreach($this->dummyProducts as $productAttributes)
         {
-            $this->runAddResult($productAttributes);
+            $this->runAddResult();
             $results = $this->crawler->getResults();
             $this->assertTrue(is_object(array_pop($results)), 'Result item is not an object');
         }
     }
 
-    protected function runAddResult($attributes)
+    protected function runAddResult(array $attributes = [])
     {
         $this->crawler->addResult($attributes);
     }

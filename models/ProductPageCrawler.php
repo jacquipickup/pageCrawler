@@ -2,7 +2,9 @@
 namespace models;
 
 use models\PageCrawler;
+use models\Product;
 
+require('models/Product.php');
 require('models/PageCrawler.php');
 
 class ProductPageCrawler extends PageCrawler{
@@ -26,7 +28,8 @@ class ProductPageCrawler extends PageCrawler{
 
 	public function addResult($attributes)
 	{
-
+		$product = new Product();
+		array_push($this->results, $product);
 	}
 
 	public function getResults()
