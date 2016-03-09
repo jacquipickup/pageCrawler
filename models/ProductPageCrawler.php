@@ -1,7 +1,11 @@
 <?php
 namespace models;
 
-class ProductPageCrawler{
+use models\PageCrawler;
+
+require('models/PageCrawler.php');
+
+class ProductPageCrawler extends PageCrawler{
 
 	private $total;
 	private $results = [];
