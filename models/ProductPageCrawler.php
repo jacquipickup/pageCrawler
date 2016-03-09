@@ -29,6 +29,7 @@ class ProductPageCrawler extends PageCrawler{
 	public function addResult($attributes)
 	{
 		$product = new Product();
+		$product->load($attributes);
 		array_push($this->results, $product);
 	}
 
