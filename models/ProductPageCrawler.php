@@ -26,15 +26,22 @@ class ProductPageCrawler extends PageCrawler{
 	public function extractProducts()
 	{
 		$elems = $this->getProductElements();
-		$links = [];
 		foreach($elems as $elem){
+			list($size, $desciption) = $this->extractLink( $elem->find('a',0)->href );
 			$this->addResult([
 				'title' => $this->getPlainText($elem, 'h3'),
 				'unit_price' => $this->getPlainText($elem, 'p.pricePerUnit'),
-				//'description' =>,
-				//'size' =>
+				'description' => $desciption,
+				'size' => $size
 			]);
 		}
+	}
+
+	public function extractLink($link)
+	{
+		$size = '0kb';
+		$description = '';
+		return [$size, $description];
 	}
 	public function getProductElements()
 	{
