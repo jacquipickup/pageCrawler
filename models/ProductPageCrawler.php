@@ -19,7 +19,7 @@ class ProductPageCrawler extends PageCrawler{
 	{
 		return json_encode([
 			'results' => $this->results,
-			'total' => $this->total,
+			'total' => $this->getTotal(),
 		]);
 	}
 
@@ -61,4 +61,14 @@ class ProductPageCrawler extends PageCrawler{
 	{
 		return $this->results;
 	}
+
+	public function getTotal()
+	{
+		$total = 0;
+		foreach($this->results as $result){
+			$total += $result->unit_price;
+		}
+		return $total;
+	}
+
 }
