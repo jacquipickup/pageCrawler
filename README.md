@@ -2,6 +2,7 @@
 
 setup: 
  - composer install
+ - codecept build
 
 
 
