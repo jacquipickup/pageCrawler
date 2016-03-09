@@ -55,7 +55,7 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
 
     public function testGetProductElements()
     {
-        $this->productElements = $this->crawler->getProducts();
+        $this->productElements = $this->crawler->getProductElements();
         $this->assertNotEmpty($this->productElements);
         $this->assertEquals($this->productElements[0]->class, 'product');
     }
