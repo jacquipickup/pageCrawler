@@ -40,7 +40,8 @@ class ProductPageCrawler extends PageCrawler{
 	public function extractLink($link)
 	{
 		$size = '0kb';
-		$description = '';
+		$element = $this->getDomElements($link, '.productText');
+		$description = $this->getPlainText($element[0]);
 		return [$size, $description];
 	}
 	public function getProductElements()
