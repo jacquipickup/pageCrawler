@@ -9,10 +9,11 @@ require('models/PageCrawler.php');
 
 class ProductPageCrawler extends PageCrawler{
 
+	const PRODUCT_PATH = 'http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html';
+
 	protected $total;
 	protected $results = [];
 
-	protected static $path = 'http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html';
 	
 	public function extractProducts(){
 		return json_encode([
@@ -23,7 +24,7 @@ class ProductPageCrawler extends PageCrawler{
 
 	public function getProductElements()
 	{
-		$elems = $this->getDomElements('.product');
+		$elems = $this->getDomElements(self::PRODUCT_PATH, '.product');
         return $elems;
 	}
 

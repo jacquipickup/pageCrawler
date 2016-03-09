@@ -5,11 +5,10 @@ use Sunra\PhpSimple\HtmlDomParser;
 
 abstract class PageCrawler {
 
-	protected static $path = '';
 
-	public function getDomElements( $elementSelector )
+	public function getDomElements($path, $elementSelector )
 	{
-		$html = HtmlDomParser::file_get_html( static::$path );
+		$html = HtmlDomParser::file_get_html( $path );
 		$elems = [];
 		foreach($html->find($elementSelector) as $element){
 			$elems[] = $element;
