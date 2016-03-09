@@ -5,9 +5,31 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
 {
     protected $crawler;
     protected $productElements;
+    protected $dummyProducts = [];
+
     protected function setUp()
     {
         $this->crawler = new ProductPageCrawler();
+
+        $this->dummyProducts[] = [
+            'description' => 'testing Description',
+            'unit_price' => '3.20',
+            'title' => 'testing Title',
+            'size' => '200kb',
+        ];
+        $this->dummyProducts[] = [
+            'description' => 'testing Description',
+            'unit_price' => '3.20',
+            'title' => 'testing Title',
+            'size' => '200kb',
+        ];
+        $this->dummyProducts[] = [
+            'description' => 'testing Description',
+            'unit_price' => '3.20',
+            'title' => 'testing Title',
+            'size' => '200kb',
+        ];
+
     }
 
     protected function tearDown()
@@ -44,7 +66,20 @@ class ProductPageCrawlerTest extends \Codeception\TestCase\Test
     }
 
 
-   
+    public function testGetProductIsObject()
+    {
+        foreach($this->dummyProducts as $productAttributes)
+        {
+            $this->runAddResult($productAttributes);
+            $results = $this->crawler->getResults();
+            $this->assertTrue(is_object(array_pop($results)), 'Result item is not an object');
+        }
+    }
+
+    protected function runAddResult($attributes)
+    {
+        $this->crawler->addResult($attributes);
+    }
 
     
 }

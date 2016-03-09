@@ -7,8 +7,8 @@ require('models/PageCrawler.php');
 
 class ProductPageCrawler extends PageCrawler{
 
-	private $total;
-	private $results = [];
+	protected $total;
+	protected $results = [];
 
 	protected static $path = 'http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html';
 	
@@ -24,7 +24,13 @@ class ProductPageCrawler extends PageCrawler{
         return $elems;
 	}
 
-	protected function addResult(){
-		
+	public function addResult($attributes)
+	{
+
+	}
+
+	public function getResults()
+	{
+		return $this->results;
 	}
 }
