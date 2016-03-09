@@ -32,7 +32,7 @@ class ProductPageCrawler extends PageCrawler{
 				'title' => $this->getPlainText($elem, 'h3'),
 				'unit_price' => Product::formatFloat($this->getPlainText($elem, 'p.pricePerUnit')),
 				'description' => $desciption,
-				'size' => $size
+				'size' => Product::formatSize($size)
 			]);
 		}
 	}

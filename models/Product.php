@@ -30,4 +30,8 @@ class Product {
 		return $matches[0]*1;
 	}
 
+	public static function formatSize($value)
+	{
+		return number_format($value/ 1024,2)  . 'kb';
+	}
 }
