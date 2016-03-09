@@ -15,4 +15,15 @@ abstract class PageCrawler {
 		}
        	return $elems;
 	}
+
+	public function getPlainText($elem, $selector = null)
+	{
+		if($selector){
+			$element = $elem->find($selector, 0);
+		}else{
+			$element = $elem;
+		}
+		return trim(strip_tags($element->plaintext));
+	}
+
 }
