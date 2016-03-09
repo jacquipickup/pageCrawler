@@ -30,7 +30,7 @@ class ProductPageCrawler extends PageCrawler{
 			list($size, $desciption) = $this->extractLink( $elem->find('a',0)->href );
 			$this->addResult([
 				'title' => $this->getPlainText($elem, 'h3'),
-				'unit_price' => $this->getPlainText($elem, 'p.pricePerUnit'),
+				'unit_price' => Product::formatFloat($this->getPlainText($elem, 'p.pricePerUnit')),
 				'description' => $desciption,
 				'size' => $size
 			]);

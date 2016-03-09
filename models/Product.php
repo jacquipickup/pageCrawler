@@ -24,4 +24,10 @@ class Product {
 		return $this->$key;
 	}
 
+	public static function formatFloat($value)
+	{
+		preg_match('/[0-9.]+/', $value, $matches);
+		return $matches[0]*1;
+	}
+
 }
